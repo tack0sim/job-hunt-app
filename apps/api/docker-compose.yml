@@ -1,0 +1,49 @@
+services:
+  api:
+    image: express-api
+    container_name: express-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8080"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      ORIGIN: ${ORIGIN}
+      DATABASE_URL: ${DATABASE_URL}
+    volumes:
+      - ./src:/app/apps/api/src
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - job-hunt-app
+    
+
+  postgres:
+    image: postgres:latest
+    container_name: jobhunt_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-mydb}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - job-hunt-app
+
+networks:
+  job-hunt-app:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
