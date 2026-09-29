@@ -252,6 +252,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@job-hunt/components':
+        specifier: workspace:*
+        version: link:../../packages/components
       '@types/node':
         specifier: ^22.10.2
         version: 22.20.2
@@ -273,6 +276,15 @@ importers:
       typescript:
         specifier: ^5.7.2
         version: 5.9.3
+
+  packages/components:
+    dependencies:
+      '@types/react':
+        specifier: ^19.0.2
+        version: 19.3.0
+      react:
+        specifier: ^19.0.0
+        version: 19.3.0
 
 packages:
 
