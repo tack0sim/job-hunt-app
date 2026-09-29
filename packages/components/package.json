@@ -1,9 +1,12 @@
 {
-  "name": "@job-hunt/components",
-  "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-    "@types/react": "^19.0.2",
-    "react": "^19.0.0"
-  }
+	"name": "@job-hunt/components",
+	"version": "1.0.0",
+	"private": true,
+	"main": "./index.ts",
+	"types": "./index.ts",
+	"dependencies": {
+		"@job-hunt/types": "workspace:*",
+		"@types/react": "^19.0.2",
+		"react": "^19.0.0"
+	}
 }
