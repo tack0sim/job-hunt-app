@@ -1,0 +1,72 @@
+@import "tailwindcss" source("../../..");
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-muted: var(--muted);
+  --color-yellow: var(--yellow);
+  --color-pink: var(--pink);
+  --color-cyan: var(--cyan);
+  --color-sidebar: var(--sidebar);
+  --color-red: var(--red);
+  --color-green: var(--green);
+  --color-line-gray: var(--line-gray);
+  --color-soft-gray: var(--soft-gray);
+  --color-card-white: var(--card-white);
+  --color-tag-gray: var(--tag-gray);
+  --color-progress-bg: var(--progress-bg);
+  --color-border-muted: var(--border-muted);
+  --color-profile-border: var(--profile-border);
+  --color-notice-bg: var(--notice-bg);
+  --color-notice-green: var(--notice-green);
+  --color-tip-text: var(--tip-text);
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-mono: "DM Mono", monospace;
+}
+
+:root {
+  --ink: #171717;
+  --paper: #f5f4ef;
+  --muted: #77756e;
+  --yellow: #f4d44d;
+  --pink: #f0a8b9;
+  --cyan: #a9dfe0;
+  --sidebar: #eeece5;
+  --red: #e34d4d;
+  --green: #48a36b;
+  --line-gray: #cbc8c0;
+  --soft-gray: #d6d2c8;
+  --card-white: #fffef9;
+  --tag-gray: #ddd9cf;
+  --progress-bg: #d6d2c8;
+  --border-muted: #aaa79e;
+  --profile-border: #c9c6bd;
+  --notice-bg: #e3efdf;
+  --notice-green: #398454;
+  --tip-text: #b7b5ae;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+  
+  button,
+  input {
+    font: inherit;
+  }
+  
+  button {
+    color: inherit;
+    cursor: pointer;
+  }
+}
