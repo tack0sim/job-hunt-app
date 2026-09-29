@@ -20,7 +20,7 @@ export const jobs = pgTable("jobs", {
 
 export const applications = pgTable("applications", {
     id: uuid().primaryKey().defaultRandom(),
-    job: uuid("job_id").notNull().references(() => jobs.id),
+    job: uuid("job_id").references(() => jobs.id, { onDelete: "cascade" }),
     company: uuid("company_id").notNull().references(() => companies.id),
     type: applicationTypes().notNull().default("advertised"),
     status: applicationStatuses().notNull().default("pending"),

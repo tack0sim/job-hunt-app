@@ -1,6 +1,7 @@
 import { Router, type Request, type Response } from "express";
 import db from "../db/index.ts";
 import { companies } from "../db/schema.ts";
+import type { CompanyInsert } from "../db/types.ts";
 import { eq } from "drizzle-orm";
 
 const companiesRouter = Router();
@@ -18,7 +19,7 @@ companiesRouter.get("/", async (req: Request, res: Response) => {
 
 // POST - create a new company
 companiesRouter.post("/", async (req: Request, res: Response) => {
-    const { name }: { name: string } = req.body;
+    const { name }: Pick<CompanyInsert, "name"> = req.body;
     // Validate name input
     if (!name) {
         return res.status(400).json({ message: "Name is required" });
